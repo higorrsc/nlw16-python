@@ -15,12 +15,12 @@ class TripsRepository:
         """
         self.__conn = conn
 
-    def create_trip(self, trips_infos: Dict) -> None:
+    def create_trip(self, trip_infos: Dict) -> None:
         """
-        Inserts a new trip into the 'trips' table with the provided trips_infos.
+        Inserts a new trip into the 'trips' table with the provided trip_infos.
 
         Args:
-            trips_infos (Dict): A dictionary containing information about the trip
+            trip_infos (Dict): A dictionary containing information about the trip
             including id, destination, start_date, end_date, owner_name, and owner_email.
 
         Returns:
@@ -35,12 +35,12 @@ class TripsRepository:
                 (?, ?, ?, ?, ?, ?)
             """,
             (
-                trips_infos["id"],
-                trips_infos["destination"],
-                trips_infos["start_date"],
-                trips_infos["end_date"],
-                trips_infos["owner_name"],
-                trips_infos["owner_email"],
+                trip_infos["id"],
+                trip_infos["destination"],
+                trip_infos["start_date"],
+                trip_infos["end_date"],
+                trip_infos["owner_name"],
+                trip_infos["owner_email"],
             ),
         )
         self.__conn.commit()
