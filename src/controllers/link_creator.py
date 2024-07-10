@@ -16,6 +16,24 @@ class LinkCreator:
         self.__links_repository = links_repository
 
     def create(self, body: Dict, trip_id: str) -> Dict:
+        """
+        Creates a new link with the provided body and trip ID.
+
+        Args:
+            body (Dict): A dictionary containing the link information.
+            trip_id (str): The ID of the trip associated with the link.
+
+        Returns:
+            Dict: A dictionary containing the newly created link ID and the status code.
+                - body (Dict): A dictionary containing the link ID.
+                    - linkId (str): The ID of the newly created link.
+                - status_code (int): The status code of the response.
+                    - 201: The link was successfully created.
+                    - 400: The request body was invalid.
+
+        Raises:
+            Exception: If an error occurs during the link creation process.
+        """
         try:
             link_id = str(uuid.uuid4())
             link_infos = {
