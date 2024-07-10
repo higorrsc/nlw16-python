@@ -36,8 +36,9 @@ class ParticipantsFinder:
                 formatted_participants.append(
                     {
                         "id": participant[0],
-                        "email_to_invite": participant[2],
-                        "name": participant[3],
+                        "name": participant[1],
+                        "email_to_invite": participant[3],
+                        "is_confirmed": participant[2],
                     }
                 )
             return {
