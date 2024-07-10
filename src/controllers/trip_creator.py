@@ -1,6 +1,8 @@
 import uuid
 from typing import Dict
 
+from src.drivers.email_sender import send_email
+
 
 class TripCreator:
     def __init__(self, trip_repository, emails_repository) -> None:
@@ -55,6 +57,10 @@ class TripCreator:
                             "email": email,
                         }
                     )
+            send_email(
+                [body["owner_email"]],
+                f"<p>Confirmação de viagem: <a href='http://localhost:3000/trips/{trip_id}/confirm'>clique aqui</a></p>",
+            )
             return {"body": {"id": trip_id}, "status_code": 201}
 
         except Exception as error:
