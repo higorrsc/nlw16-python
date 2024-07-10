@@ -1,10 +1,10 @@
 from typing import Dict
 
 
-class LinkFinder:
+class LinksFinder:
     def __init__(self, links_repository) -> None:
         """
-        Initializes the LinkFinder object.
+        Initializes the LinksFinder object.
 
         Args:
             links_repository (LinksRepository): The repository for managing links.

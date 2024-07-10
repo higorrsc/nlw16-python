@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 
 from src.controllers.link_creator import LinkCreator
-from src.controllers.link_finder import LinkFinder
+from src.controllers.link_finder import LinksFinder
 
 from src.controllers.trip_confirmer import TripConfirmer
 from src.controllers.trip_creator import TripCreator
@@ -168,7 +168,7 @@ def find_link(tripId):
     """
     conn = db_connection_handler.get_connection()
     links_repository = LinksRepository(conn)
-    controller = LinkFinder(links_repository)
+    controller = LinksFinder(links_repository)
 
     response = controller.find(tripId)
 
