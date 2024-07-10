@@ -4,6 +4,7 @@ from src.controllers.activity_creator import ActivityCreator
 from src.controllers.activity_finder import ActivitiesFinder
 from src.controllers.link_creator import LinkCreator
 from src.controllers.link_finder import LinksFinder
+from src.controllers.participant_confirmer import ParticipantConfirmer
 from src.controllers.participant_creator import ParticipantCreator
 from src.controllers.participant_finder import ParticipantsFinder
 from src.controllers.trip_confirmer import TripConfirmer
@@ -221,6 +222,31 @@ def find_participants(tripId):
     controller = ParticipantsFinder(participants_repository)
 
     response = controller.find(tripId)
+
+    return jsonify(response["body"]), response["status_code"]
+
+
+@trips_routes_bp.route(
+    "/trips/<tripId>/participants/<participantId>/confirm", methods=["PATCH"]
+)
+def confirm_participant(tripId, participantId):
+    """
+    Confirm the participation of a participant in a trip.
+
+    Args:
+        tripId (str): The ID of the trip.
+        participantId (str): The ID of the participant.
+
+    Returns:
+        Tuple[Dict, int]: A tuple containing the response body and the HTTP status code.
+            - body (Dict): A dictionary containing the response body.
+            - status_code (int): The HTTP status code of the response.
+    """
+    conn = db_connection_handler.get_connection()
+    participant_repository = ParticipantsRepository(conn)
+    controller = ParticipantConfirmer(participant_repository)
+
+    response = controller.confirm(participantId)
 
     return jsonify(response["body"]), response["status_code"]
 
