@@ -1,5 +1,4 @@
 from typing import Dict
-import uuid
 
 
 class LinkFinder:
