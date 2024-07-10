@@ -19,7 +19,7 @@ def test_create_trip() -> None:
     """
     conn = db_connection_handler.get_connection()
     trips_repository = TripsRepository(conn)
-    trips_infos = {
+    trip_infos = {
         "id": TRIP_ID,
         "destination": "Osasco",
         "start_date": datetime.strptime("30-07-2024", "%d-%m-%Y"),
@@ -28,7 +28,7 @@ def test_create_trip() -> None:
         "owner_email": "higorrsc@gmail.com",
     }
 
-    trips_repository.create_trip(trips_infos=trips_infos)
+    trips_repository.create_trip(trip_infos=trip_infos)
 
 
 @pytest.mark.skip(reason="database interaction")

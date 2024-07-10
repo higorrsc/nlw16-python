@@ -68,5 +68,5 @@ class LinksRepository:
             """,
             (trip_id,),
         )
-        trips = cursor.fetchall()
-        return trips
+        links = cursor.fetchall()
+        return links
