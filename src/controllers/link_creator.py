@@ -1,5 +1,5 @@
-from typing import Dict
 import uuid
+from typing import Dict
 
 
 class LinkCreator:
